@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groot GPT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Floating Menu Bar */
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #7b5842;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .menu-bar .logo {
+            color: #fff;
+            font-size: 20px;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        .menu-bar .button {
+            background-color: #2a1f17;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 120px auto 0;
+            padding: 20px;
+        }
+
+        .chatbox {
+            width: 100%;
+            max-height: 400px;
+            border: 5px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            background-color: #b4b4b4;
+            border-radius: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .assistant-message {
+            text-align: left;
+        }
+
+        .user-message .message-content {
+            background-color: #eaf6ff;
+        }
+
+        .assistant-message .message-content {
+            background-color: #eaffcc;
+        }
+
+        .message-content {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .input-box {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .input-box input {
+            flex: 1;
+            padding: 5px;
+        }
+
+        .input-box button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div class="button" onclick="showAbout()">About</div>
+        <div class="logo">Groot GPT</div>
+    </div>
+
+    <div class="container">
+        <div class="chatbox" id="chatbox">
+            <div class="message assistant-message">
+                <img class="profile-photo" src="2.jpg" alt="Assistant">
+                <span class="message-content">I am Groot</span>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Chat with Groot">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <div id="about-lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="close-button" onclick="hideAbout()">&times;</span>
+            <h2>About</h2>
+            <p>Created by Navin</p>
+        </div>
+    </div>
+
+    <script>
+        // Add event listener to the input field to handle Enter key press
+        var userInput = document.getElementById('user-input');
+        userInput.addEventListener('keyup', function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            var userMessage = userInput.value.trim();
+
+            if (userMessage !== '') {
+                appendMessage(userMessage, 'user-message');
+                userInput.value = '';
+
+                // Send user message to the server for processing
+                // You can use Ajax or WebSocket to send the message to a server-side script
+
+                // Example response from the server
+                var assistantResponse = 'I am Groot';
+
+                // Append the assistant's response to the chatbox
+                appendMessage(assistantResponse, 'assistant-message');
+            }
+        }
+
+        function appendMessage(message, messageClass) {
+            var chatbox = document.getElementById('chatbox');
+            var messageContainer = document.createElement('div');
+            messageContainer.className = 'message ' + messageClass;
+            var profilePhoto = document.createElement('img');
+            profilePhoto.className = 'profile-photo';
+            profilePhoto.src = '1.jpg'; // Replace with user's profile photo
+            profilePhoto.alt = 'User';
+            var messageContent = document.createElement('span');
+            messageContent.className = 'message-content';
+            messageContent.textContent = message;
+            messageContainer.appendChild(profilePhoto);
+            messageContainer.appendChild(messageContent);
+            chatbox.appendChild(messageContainer);
+
+            // Scroll to the bottom of the chatbox
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function showAbout() {
+            var aboutLightbox = document.getElementById('about-lightbox');
+            aboutLightbox.style.display = 'block';
+        }
+
+        function hideAbout() {
+            var aboutLightbox = document.getElementById('about-lightbox');
+            aboutLightbox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

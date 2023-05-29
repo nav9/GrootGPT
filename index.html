@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Groot GPT</title>
     <style>
@@ -119,7 +120,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark background color */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Dark background color */
             z-index: 99999;
         }
 
@@ -146,6 +148,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="menu-bar">
         <div class="logo">Groot GPT</div>
@@ -170,14 +173,21 @@
         <div class="lightbox-content">
             <span class="close-button" onclick="hideAbout()">&times;</span>
             <h2>About</h2>
-            <p>This program was created entirely by prompting OpenAI's Chat GPT. Only the profile icon files were added manually. A side-quest of this program is to raise awareness about The Real Cure For Eye Strain. Rather than falling for marketing gimmicks that promise to cure or reduce eye strain, you need to understand that the human eye was not evolved to handle long hours of staring at a screen. The inner and outer eye muscles get tired and pain. That pain is your eyes screaming at you, begging for rest. So after 20 minutes of screentime, simply close your eyes and wait until the strain reduces. Also, ensure you get 8 hours uninterrupted sleep each night to let the eye muscles heal. Don't forget to consume a well balanced diet of nutritious, well-cooked food.</p>
+            <p>This program was created entirely by prompting OpenAI's Chat GPT. Only the profile icon files were added
+                manually. A side-quest of this program is to raise awareness about The Real Cure For Eye Strain. Rather
+                than falling for marketing gimmicks that promise to cure or reduce eye strain, you need to understand
+                that the human eye was not evolved to handle long hours of staring at a screen. The inner and outer eye
+                muscles get tired and pain. That pain is your eyes screaming at you, begging for rest. So after 20
+                minutes of screentime, simply close your eyes and wait until the strain reduces. Also, ensure you get 8
+                hours uninterrupted sleep each night to let the eye muscles heal. Don't forget to consume a well
+                balanced diet of nutritious, well-cooked food.</p>
         </div>
     </div>
 
     <script>
         // Add event listener to the input field to handle Enter key press
         var userInput = document.getElementById('user-input');
-        userInput.addEventListener('keyup', function(event) {
+        userInput.addEventListener('keyup', function (event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 sendMessage();
@@ -195,7 +205,7 @@
                 // You can use Ajax or WebSocket to send the message to a server-side script
 
                 // Example response from the server
-                var assistantResponse = 'I am Groot';
+                var assistantResponse = 'I am Groot ' + getEmoticon(userMessage);
 
                 // Append the assistant's response to the chatbox
                 appendMessage(assistantResponse, 'assistant-message');
@@ -233,6 +243,73 @@
         function hideAbout() {
             document.getElementById('about-lightbox').style.display = 'none';
         }
+
+        function getEmotion(sentence) {
+            var happinessKeywords = ["happy", "joyful", "excited", "delighted"];
+            var sadnessKeywords = ["sad", "unhappy", "depressed", "disappointed"];
+            var angerKeywords = ["angry", "frustrated", "irate", "enraged"];
+            var frustrationKeywords = ["frustrated", "annoyed", "irritated", "aggravated"];
+            var determinationKeywords = ["determined", "persistent", "resolute", "driven"];
+
+            // Convert sentence to lowercase for case-insensitive matching
+            sentence = sentence.toLowerCase();
+
+            // Check for happiness
+            for (var i = 0; i < happinessKeywords.length; i++) {
+                if (sentence.indexOf(happinessKeywords[i]) !== -1) {
+                    return "happiness";
+                }
+            }
+
+            // Check for sadness
+            for (var j = 0; j < sadnessKeywords.length; j++) {
+                if (sentence.indexOf(sadnessKeywords[j]) !== -1) {
+                    return "sadness";
+                }
+            }
+
+            // Check for anger
+            for (var k = 0; k < angerKeywords.length; k++) {
+                if (sentence.indexOf(angerKeywords[k]) !== -1) {
+                    return "anger";
+                }
+            }
+
+            // Check for frustration
+            for (var l = 0; l < frustrationKeywords.length; l++) {
+                if (sentence.indexOf(frustrationKeywords[l]) !== -1) {
+                    return "frustration";
+                }
+            }
+
+            // Check for determination
+            for (var m = 0; m < determinationKeywords.length; m++) {
+                if (sentence.indexOf(determinationKeywords[m]) !== -1) {
+                    return "determination";
+                }
+            }
+
+            // If no emotion keyword is found, return null
+            return null;
+        }
+
+        function getEmoticon(sentence) {
+            var emotion = getEmotion(sentence);
+            var emoticons = {
+                "happiness": ["😊", "😄", "😃", "🙂"],
+                "sadness": ["😢", "😔", "😞", "😥"],
+                "anger": ["😡", "😠", "🤬", "😤"],
+                "frustration": ["😫", "😣", "😖", "😡"],
+                "determination": ["💪", "👊", "🔥", "💯"]
+            };
+
+            if (emotion in emoticons) {
+                return emoticons[emotion][Math.floor(Math.random() * emoticons[emotion].length)];
+            }
+
+            return "";
+        }        
     </script>
 </body>
+
 </html>

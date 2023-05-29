@@ -2,7 +2,11 @@
 <html>
 
 <head>
-    <title>Groot GPT</title>
+    <title>Groot GPT - Chat with Groot, the AI Assistant</title>
+    <meta name="description"
+        content="Chat with Groot, the AI Assistant powered by Groot GPT. Explore a fun and interactive conversation experience with GrootGPT.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -138,7 +142,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             /* Dark background color */
-            z-index: 99999;                     
+            z-index: 99999;
         }
 
         .lightbox-content {
@@ -164,6 +168,12 @@
             color: #000;
             cursor: pointer;
         }
+
+        #visitor-counter {
+            margin-top: 500px;
+            text-align: center;
+            font-size: 0.5em;
+        }
     </style>
 </head>
 
@@ -176,7 +186,7 @@
     <div class="container">
         <div class="chatbox" id="chatbox">
             <div class="message assistant-message">
-                <img class="profile-photo" src="profile1.jpg" alt="Assistant">
+                <img class="profile-photo" src="profile1.jpg" alt="User Profile Image - Groot GPT">
                 <span class="message-content">I am Groot</span>
             </div>
         </div>
@@ -184,6 +194,14 @@
         <div class="input-box">
             <input type="text" id="user-input" placeholder="Chat with Groot">
             <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <div id="visitor-counter">
+            <a href='http://www.freevisitorcounters.com'>freevisitorcounters</a>
+            <script type='text/javascript'
+                src='https://www.freevisitorcounters.com/auth.php?id=6aded715fee10a46eb62de2eccd31254670159ce'></script>
+            <script type="text/javascript"
+                src="https://www.freevisitorcounters.com/en/home/counter/1036081/t/2"></script>
         </div>
     </div>
 
@@ -195,9 +213,12 @@
                 by prompting OpenAI's Chat GPT. Yes, the entire HTML and JavaScript on this website was generated
                 by Chat GPT. The profile icons were generated via
                 Stable Diffusion Online and scaled in GIMP manually. The program does not use GPT to generate outputs.
-                GPT was only used to build and refine the code that runs this page. A trivial sentiment-analysis function is 
-                present, and will cause Groot to reply with emoticons. For example, if you use a sentence containing words 
-                like "happy", "love", or "sad" (pressing Ctrl+u to see the source code will show which other words are supported). 
+                GPT was only used to build and refine the code that runs this page. A trivial sentiment-analysis
+                function is
+                present, and will cause Groot to reply with emoticons. For example, if you use a sentence containing
+                words
+                like "happy", "love", or "sad" (pressing Ctrl+u to see the source code will show which other words are
+                supported).
             </p>
             <p>A side-quest of this program is to raise awareness about understanding
                 that the human eye was not evolved to handle long hours of staring at a screen. The inner and outer eye

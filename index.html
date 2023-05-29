@@ -59,6 +59,8 @@
             padding: 10px;
             background-color: #b4b4b4;
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
         }
 
         .message {
@@ -67,10 +69,12 @@
 
         .user-message {
             text-align: right;
+            align-self: flex-end;
         }
 
         .assistant-message {
             text-align: left;
+            align-self: flex-start;
         }
 
         .user-message .message-content {
@@ -110,6 +114,17 @@
             border-radius: 50%;
             margin-right: 10px;
             object-fit: cover;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            order: 1;
+            margin-left: 10px;
+            /* Adjust as needed */
+            margin-right: 0;
+            /* Adjust as needed */
         }
 
         /* Lightbox */
@@ -173,14 +188,18 @@
         <div class="lightbox-content">
             <span class="close-button" onclick="hideAbout()">&times;</span>
             <h2>About</h2>
-            <p>This program was created entirely by prompting OpenAI's Chat GPT. Only the profile icon files were added
-                manually. A side-quest of this program is to raise awareness about The Real Cure For Eye Strain. Rather
-                than falling for marketing gimmicks that promise to cure or reduce eye strain, you need to understand
+            <p>This program was created entirely by prompting OpenAI's Chat GPT. The profile icons were generated via
+                Stable Diffusion Online and scaled in GIMP manually. A side-quest of this program is to raise awareness
+                about understanding
                 that the human eye was not evolved to handle long hours of staring at a screen. The inner and outer eye
                 muscles get tired and pain. That pain is your eyes screaming at you, begging for rest. So after 20
                 minutes of screentime, simply close your eyes and wait until the strain reduces. Also, ensure you get 8
                 hours uninterrupted sleep each night to let the eye muscles heal. Don't forget to consume a well
-                balanced diet of nutritious, well-cooked food.</p>
+                balanced diet of nutritious, well-cooked food. Companies, friends and family need to build a supportive
+                environment to help people avoid over-exerting themselves and suffering a burnout. Those who have been
+                through a burnout need support to recover. Build a healthy world. The immature quest for money and power
+                are less important.
+            </p>
         </div>
     </div>
 
@@ -217,7 +236,7 @@
             var messageContainer = document.createElement('div');
             messageContainer.className = 'message ' + messageClass;
             var profilePhoto = document.createElement('img');
-            profilePhoto.className = 'profile-photo';
+            profilePhoto.className = 'profile-img';
             if (messageClass === 'user-message') {
                 profilePhoto.src = 'profile2.jpg'; // Replace with user's profile photo
                 profilePhoto.alt = 'User';
@@ -228,8 +247,8 @@
             var messageContent = document.createElement('span');
             messageContent.className = 'message-content';
             messageContent.textContent = message;
-            messageContainer.appendChild(profilePhoto);
             messageContainer.appendChild(messageContent);
+            messageContainer.appendChild(profilePhoto);            
             chatbox.appendChild(messageContainer);
 
             // Scroll to the bottom of the chatbox

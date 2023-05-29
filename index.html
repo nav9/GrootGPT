@@ -196,13 +196,23 @@
                 minutes of screentime, simply close your eyes and wait until the strain reduces. Also, ensure you get 8
                 hours uninterrupted sleep each night to let the eye muscles heal. Don't forget to consume a well
                 balanced diet of nutritious, well-cooked food. Companies, friends and family need to build a supportive
-                environment to help people get proper sleep and avoid over-exerting themselves and suffering a burnout. 
-                Those who have been through a burnout need support to recover. Let's build a healthy world. 
+                environment to help people get proper sleep and avoid over-exerting themselves and suffering a burnout.
+                Those who have been through a burnout need support to recover. Let's build a healthy world.
             </p>
         </div>
     </div>
 
     <script>
+        window.onload = function () {
+            // Code to be executed after the page finishes loading
+
+            // Get the input box element
+            var inputBox = document.getElementById('user-input');
+
+            // Set the cursor focus on the input box
+            inputBox.focus();
+        };
+
         // Add event listener to the input field to handle Enter key press
         var userInput = document.getElementById('user-input');
         userInput.addEventListener('keyup', function (event) {
@@ -278,14 +288,16 @@
             var angerKeywords = ["Angry", "Frustrated", "Irate", "Enraged", "Infuriated", "Livid", "Raging", "Fuming", "Incensed", "Seething", "Outraged", "Resentful", "Out of control", "Wrathful", "Annoyed", "Vexed", "Provoked", "Miffed", "Aggravated", "Irritated", "Mad", "Hostile", "Bitter", "Indignant", "Furious", "Steaming", "Peeved", "Riled up", "Huffy", "Upset", "Offended", "Riled", "Hot under the collar", "Livid", "Raving", "Inflamed", "Teed off", "Choleric", "Spiteful", "Infuriated", "Rabid", "Out of one's mind", "Hopping mad", "Galled", "Hateful", "Displeased", "Burning", "Passionate", "Sore", "Irritable", "Maddened", "Rankled", "Indignation", "Ire", "Crazy", "Raving mad", "Disgruntled", "Uptight", "In a rage", "Cranky", "Malicious", "Fiery", "Ferocious", "Pissed off", "Angrily", "Tempestuous", "Malevolent", "Provoked", "Infuriating", "Steamed up", "In a temper", "Sulky", "Offended", "Rageful", "Stormy", "Wrath", "Perturbed", "Violent", "Ballistic", "Testy", "Ireful", "Rancorous", "Wrathy", "Splenetic", "Fuming", "Bristling", "Grouchy", "Rankling", "Seething", "Apoplectic", "Sullen", "Enragement", "Torrid", "Berserk", "Out of humor", "Exasperated", "Unhappy", "In a towering rage", "Seeing red", "Up in arms", "Infuriation", "Resentment", "Madness", "Tantrum"];
             var frustrationKeywords = ["Frustrated", "Annoyed", "Irritated", "Aggravated", "Displeased", "Disgruntled", "Peeved", "Baffled", "Perplexed", "Vexed", "Exasperated", "Infuriated", "Upset", "Angry", "Enraged", "Fed up", "Disappointed", "Disheartened", "Discouraged", "Dissatisfied", "Bitter", "Resentful", "Outraged", "Embittered", "Provoked", "Ire", "Perturbed", "Troubled", "Miffed", "Bothered", "Teed off", "Riled up", "Riled", "Offended", "Out of sorts", "Discontented", "Cross", "Galled", "Aghast", "Raging", "Enraged", "Steamed", "Unfulfilled", "Unsatisfied", "Pissed off", "Ruffled", "Distressed", "Indignant", "Wound up", "Chagrined", "Crabby", "Ill-tempered", "Sore", "Testy", "Restless", "Grouchy", "Sulky", "Chafed", "Fretful", "Perturbed", "Sullen", "Irate", "Flustered", "Worried", "In a huff", "Out of temper", "Ticked off", "Moody", "Anxious", "Peevish", "Fussy", "Maddened", "Sour", "Irked", "Disconcerted", "Bad-tempered", "Hot under the collar", "Raging mad", "Disturbed", "Incensed", "Fit to be tied", "Bummed out", "In a state", "Agitated", "Despondent", "In a snit", "Restive", "Disgruntled", "Ill at ease", "Rattled", "Hacked off", "Impatient", "Discomfited", "Crushed", "Flummoxed", "Incensed", "Downcast", "Dissed", "Desperate", "Harried", "Fidgety", "Disquieted", "Raving mad", "Ireful", "Jittery", "Out of joint", "Bristling", "Rancorous", "Beside oneself", "Uptight", "Out of countenance", "Rackety", "Rueful"];
             var determinationKeywords = ["Determined", "Persistent", "Resolute", "Driven", "Ambitious", "Tenacious", "Fierce", "Unyielding", "Focused", "Strong-willed", "Unstoppable", "Committed", "Devoted", "Persevering", "Courageous", "Relentless", "Indomitable", "Gritty", "Steadfast", "Tenacious", "Untiring", "Unwavering", "Single-minded", "Iron-willed", "Dedicated", "Purposeful", "Inflexible", "Unflinching", "Unshakeable", "Hardworking", "Inspired", "Motivated", "Driven", "Zealous", "Eager", "Passionate", "Disciplined", "Fearless", "Brave", "Bold", "Optimistic", "Resilient", "Confident", "Self-assured", "Empowered", "Unrelenting", "Valiant", "Untiring", "Untamed", "Tenacious", "Unswerving", "Unbending", "Uncompromising", "Unhesitating", "Unfaltering", "Uncompromising", "Unshakable", "Unassailable", "Unbeatable", "Unbowed", "Unyielding", "Unwavering", "Unstinting", "Unquenchable", "Unbreakable", "Unconquerable", "Unflagging", "Unassailable", "Unchallenged", "Undaunted", "Unflappable", "Unimpeachable", "Unimpressed", "Unintimidated", "Unimpressionable", "Uninhibited", "Unstoppable", "Unrestrained", "Unshakeable", "Unshaken", "Unrivaled", "Unruffled", "Unswerving", "Untroubled", "Unwaivering", "Unwearying", "Unyielding", "Unfailing", "Unruffled", "Unceasing", "Unblinking", "Undeviating", "Untroubled", "Unaffected", "Undeterred", "Undivided", "Undoubting", "Undying", "Unerring", "Unhesitant", "Unhindered", "Unhurried", "Unhurtable", "Unleashed", "Unrivaled"];
+            var loveKeywords = ["love", "affection", "passion", "romance", "devotion", "admiration", "intimacy", "desire", "compassion", "tenderness", "endearment", "infatuation", "yearning", "attachment", "fondness", "care", "warmth", "sentiment", "adoration", "crush", "emotion", "longing", "lust", "friendship", "sweetheart", "beloved", "darling", "heartthrob", "soulmate", "paramour", "treasure", "valentine", "partner", "lover", "spouse", "couple", "relationship", "commitment", "wedding", "kiss", "hug", "romantic", "cuddle", "flirtation", "courtship", "passionate", "yearn", "cherish", "woo", "serenade", "charm", "wooing", "lovestruck", "butterflies", "forever", "dreamy", "bliss", "sentimental", "relationship", "affectionate", "amour", "smitten", "enchant", "embrace", "devoted", "adore", "amorous", "desire", "tender", "heartfelt", "truelove", "endearing", "intimate", "fascination", "darling", "flame", "betrothed", "beloved", "romanticize", "passion", "puppy love", "swoon", "crush", "woo", "spark", "devotion", "admire", "wooer", "romantic", "amorist", "honeymoon", "marriage", "desirous", "yearn", "adoring", "yearning", "wooing", "flirt", "sentiment", "care", "wed", "honey", "dear", "amour", "yearning", "beloved", "sweetheart"];
 
             // Convert sentence to lowercase for case-insensitive matching
             sentence = sentence.toLowerCase();
-            happinessKeywords = happinessKeywords.map(function(word) {return word.toLowerCase();});
-            sadnessKeywords = sadnessKeywords.map(function(word) {return word.toLowerCase();});
-            angerKeywords = angerKeywords.map(function(word) {return word.toLowerCase();});
-            frustrationKeywords = frustrationKeywords.map(function(word) {return word.toLowerCase();});
-            determinationKeywords = determinationKeywords.map(function(word) {return word.toLowerCase();});
+            happinessKeywords = happinessKeywords.map(function (word) { return word.toLowerCase(); });
+            sadnessKeywords = sadnessKeywords.map(function (word) { return word.toLowerCase(); });
+            angerKeywords = angerKeywords.map(function (word) { return word.toLowerCase(); });
+            frustrationKeywords = frustrationKeywords.map(function (word) { return word.toLowerCase(); });
+            determinationKeywords = determinationKeywords.map(function (word) { return word.toLowerCase(); });
+            loveKeywords = loveKeywords.map(function (word) { return word.toLowerCase(); });
 
             // Check for happiness
             for (var i = 0; i < happinessKeywords.length; i++) {
@@ -322,6 +334,13 @@
                 }
             }
 
+            // Check for love
+            for (var m = 0; m < loveKeywords.length; m++) {
+                if (sentence.indexOf(loveKeywords[m]) !== -1) {
+                    return "love";
+                }
+            }
+
             // If no emotion keyword is found, return null
             return null;
         }
@@ -333,7 +352,8 @@
                 "sadness": ["😢", "😔", "😞", "😥"],
                 "anger": ["😡", "😠", "🤬", "😤"],
                 "frustration": ["😫", "😣", "😖", "😡"],
-                "determination": ["💪", "👊", "🔥", "💯"]
+                "determination": ["💪", "👊", "🔥", "💯"],
+                "love": ["😍", "❤️", "💘", "💖", "😻"],
             };
 
             if (emotion in emoticons) {

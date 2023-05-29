@@ -188,7 +188,7 @@
         <div class="lightbox-content">
             <span class="close-button" onclick="hideAbout()">&times;</span>
             <h2>About</h2>
-            <p>This program was created entirely by prompting OpenAI's Chat GPT. The profile icons were generated via
+            <p>This program was created by prompting OpenAI's Chat GPT. The profile icons were generated via
                 Stable Diffusion Online and scaled in GIMP manually. A side-quest of this program is to raise awareness
                 about understanding
                 that the human eye was not evolved to handle long hours of staring at a screen. The inner and outer eye
@@ -196,9 +196,8 @@
                 minutes of screentime, simply close your eyes and wait until the strain reduces. Also, ensure you get 8
                 hours uninterrupted sleep each night to let the eye muscles heal. Don't forget to consume a well
                 balanced diet of nutritious, well-cooked food. Companies, friends and family need to build a supportive
-                environment to help people avoid over-exerting themselves and suffering a burnout. Those who have been
-                through a burnout need support to recover. Build a healthy world. The immature quest for money and power
-                are less important.
+                environment to help people get proper sleep and avoid over-exerting themselves and suffering a burnout. 
+                Those who have been through a burnout need support to recover. Build a healthy world. 
             </p>
         </div>
     </div>
@@ -214,9 +213,11 @@
         });
 
         function sendMessage() {
-            var userMessage = userInput.value.trim();
-
-            if (userMessage !== '') {
+            var userMessage = {
+                type: 'user',
+                content: userInput.value.trim()
+            };
+            if (userMessage.content !== '') {
                 appendMessage(userMessage, 'user-message');
                 userInput.value = '';
 
@@ -224,8 +225,10 @@
                 // You can use Ajax or WebSocket to send the message to a server-side script
 
                 // Example response from the server
-                var assistantResponse = 'I am Groot ' + getEmoticon(userMessage);
-
+                var assistantResponse = {
+                    type: 'assistant',
+                    content: 'I am Groot ' + getEmoticon(userMessage.content)
+                };
                 // Append the assistant's response to the chatbox
                 appendMessage(assistantResponse, 'assistant-message');
             }
@@ -246,9 +249,15 @@
             }
             var messageContent = document.createElement('span');
             messageContent.className = 'message-content';
-            messageContent.textContent = message;
-            messageContainer.appendChild(messageContent);
-            messageContainer.appendChild(profilePhoto);            
+            messageContent.textContent = message.content;
+            if (message.type === 'user') {
+                messageContainer.appendChild(messageContent);
+                messageContainer.appendChild(profilePhoto);
+            }
+            else {
+                messageContainer.appendChild(profilePhoto);
+                messageContainer.appendChild(messageContent);
+            }
             chatbox.appendChild(messageContainer);
 
             // Scroll to the bottom of the chatbox

@@ -4,7 +4,7 @@ It took just around 4 hours to create this project. It showcases the amazing abi
   
 # Run  
 * Clone the repository locally and open `index.html` in any web browser.   
-* Access https://nav9.github.io/grootgpt.github.io/  
+* View it live on: https://nav9.github.io/grootgpt/  
    
 # Disclaimer  
 This program is not in any way associated with Marvel or OpenAI or Stable Diffusion Online. It is merely a hobby project created to explore generative AI capabilities.  

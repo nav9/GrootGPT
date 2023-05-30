@@ -55,6 +55,16 @@
             padding: 20px;
         }
 
+        .instructions {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .small-font {
+            font-size: 10px;
+            color: #636363;
+        }
+
         .chatbox {
             width: 100%;
             max-height: 400px;
@@ -183,8 +193,14 @@
         <div class="button" onclick="showAbout()">About</div>
     </div>
 
+
+
+
     <div class="container">
         <div class="chatbox" id="chatbox">
+            <div class="instructions">
+                <p class="small-font">Say something to make Groot reply with an emoticon.</p>
+            </div>
             <div class="message assistant-message">
                 <img class="profile-photo" src="profile1.jpg" alt="User Profile Image - Groot GPT">
                 <span class="message-content">I am Groot</span>
